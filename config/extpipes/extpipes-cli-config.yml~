@@ -32,29 +32,20 @@ default-contacts:
       send-notification: true
 
 rawdbs:
-    - rawdb-name: src:001:sap:db
-      dataset-external-id: src:001:sap:ds
-      short-name: sap
+  # list of raw-dbs > containing rawtables > containing pipelines
+    - rawdb-name: <node_name>:db
+      dataset-external-id: <node_name>:ds
+      short-name: <Short name for raw DB>
       rawtables:
-          - rawtable-name: assets
+          - rawtable-name: <table name>
             pipelines:
-                - source: csv
+        # source is a short-name identifying the pipeline source being
+        # a 'db-extractor (db)', an 'Azure Function (az-func)',
+        # or 'Azure Data Factory (adf)', 'Python script (py)', ..
+                - source: <source type>
                   schedule: On trigger
                   contacts:
-                      - name: minickel66
-                        email: minickel@lyse.net
-                        role: Bootcamp 12 Administrator
-                        send-notification: false
-    - rawdb-name: src:002:opcua:db
-      dataset-external-id: src:002:opcua:ds
-      short-name: opcua
-      rawtables:
-          - rawtable-name: timeseries
-            pipelines:
-                - source: ice-cream-api
-                  schedule: On trigger
-                  contacts:
-                      - name: minickel66
-                        email: minickel@lyse.net
-                        role: Bootcamp 12 Administrator
+                      - name: <Contact name>
+                        email: <Contact e-mail>
+                        role: <Contact role>
                         send-notification: false
